@@ -7,13 +7,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 
 @Slf4j
-@Controller
+@RestController
 public class ResponseBodyController {
 
     @GetMapping("/response-body-string-v1")
@@ -28,7 +28,6 @@ public class ResponseBodyController {
 
     // 문자를 처리할때
     // @ResponseBody 사용하면 view 사용하지 않고 HTTP 메시지 컨버터를 통해 HTTP메시지 직접 입력 가능
-    @ResponseBody
     @GetMapping("/response-body-string-v3")
     public String responseBodyV3() {
         return "ok";
@@ -44,7 +43,6 @@ public class ResponseBodyController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
     @GetMapping("/response-body-json-v2")
     public HelloData responseBodyJsonV2() {
         HelloData helloData = new HelloData();
